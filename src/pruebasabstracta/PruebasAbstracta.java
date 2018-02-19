@@ -27,9 +27,21 @@ public class PruebasAbstracta {
 
         System.out.println(sumaFor(lstNumeros));
         System.out.println(sumaWhile(lstNumeros));
-//        numeros = System.console().readLine();
-//        suma(numeros);
+         
+        System.out.println(num(5, 0));
+
     }
+    
+    
+    public static int num(int n, int sum) {
+    if (n == 0) {
+        return sum;
+    }
+
+    sum += n;
+    return num(n - 1, sum);
+
+}
 
     public static Integer sumaFor(ArrayList<Integer> lstNumeros) {
         int resultado = 0;
@@ -47,6 +59,11 @@ public class PruebasAbstracta {
             i++;
         }
         return resultado;
+    }
+
+    public static Integer sumaRecursiva(Integer n, ArrayList<Integer> lstNumeros) {
+        if n 
+        return 0;
     }
 
 }
