@@ -25,23 +25,26 @@ public class PruebasAbstracta {
         lstNumeros.add(1);
         lstNumeros.add(1);
 
-        System.out.println(suma(lstNumeros));
+        System.out.println(sumaFor(lstNumeros));
+        System.out.println(sumaWhile(lstNumeros));
 //        numeros = System.console().readLine();
 //        suma(numeros);
     }
 
     public static Integer sumaFor(ArrayList<Integer> lstNumeros) {
         int resultado = 0;
-        for (Integer i = 0;  i < lstNumeros.size(); i++) {
+        for (Integer i = 0; i < lstNumeros.size(); i++) {
             resultado += lstNumeros.get(i);
         }
         return resultado;
     }
-    
-    public static Integer sumaWhile(ArrayList<Integer> lstNumeros){
+
+    public static Integer sumaWhile(ArrayList<Integer> lstNumeros) {
         int resultado = 0;
-        while (){
-        
+        int i = 0;
+        while (i < lstNumeros.size()) {
+            resultado += lstNumeros.get(i);
+            i++;
         }
         return resultado;
     }
