@@ -36,6 +36,8 @@ public class PruebasAbstracta {
         System.out.println(sumaWhile(lstNumeros));
         System.out.println(sumaRecursive(lstNumeros));
         System.out.println(altElem(lstNumeros, lstNumeros2));
+        System.out.println(fibo(15));
+        System.out.println(fibo2());
     }
 
 // Problem 1
@@ -59,7 +61,7 @@ public class PruebasAbstracta {
 
     public static Integer sumaRecursive(List<Integer> lstNumeros) {
         if (lstNumeros.isEmpty() == true) {
-            return 0;
+            return 0; // caso base
         } else {
             return lstNumeros.get(0) + sumaRecursive(lstNumeros.subList(1, lstNumeros.size()));
         }
@@ -89,4 +91,35 @@ public class PruebasAbstracta {
         }
         return lstRes;
     }
+
+    //Problem 3
+    public static long fibo(long n) {
+        if (n > 1) {
+            return fibo(n - 1) + fibo(n - 2);
+        } else if (n == 1) {  // caso base
+            return 1;
+        } else if (n == 0) {  // caso base
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
+    public static long fibo2() {
+        long n = 15, nUltimo = 1, nUltimo2 = 0, nActual = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i < 2) {
+                nActual = i;
+            } else {
+                nActual = nUltimo + nUltimo2;
+                nUltimo2 = nUltimo;
+                nUltimo = nActual;
+            }
+        }
+        return nActual;
+    }
+
+    //Problem 4
+    
 }
