@@ -121,5 +121,10 @@ public class PruebasAbstracta {
     }
 
     //Problem 4
+    public static char[] seprar(Integer x) {
+        String numero = String.valueOf(x); // convierto a string
+        char[] digitos = numero.toCharArray(); //string a arreglo de char
+        return digitos;       
+    }
     
 }
