@@ -8,6 +8,7 @@ package pruebasabstracta;
 import static java.lang.Integer.parseInt;
 import static java.lang.System.console;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,28 +22,23 @@ public class PruebasAbstracta {
     public static void main(String[] args) {
 
         ArrayList<Integer> lstNumeros = new ArrayList<>();
-        lstNumeros.add(5);
-        lstNumeros.add(1);
-        lstNumeros.add(1);
+        lstNumeros.add(9);
+        lstNumeros.add(8);
+        lstNumeros.add(7);
+        List<Integer> lstNumeros2 = new ArrayList<>();
+        lstNumeros2.add(4);
+        lstNumeros2.add(4);
+        lstNumeros2.add(4);
+        lstNumeros2.add(4);
+        lstNumeros2.add(4);
 
         System.out.println(sumaFor(lstNumeros));
         System.out.println(sumaWhile(lstNumeros));
-         
-        System.out.println(num(5, 0));
-
-    }
-    
-    
-    public static int num(int n, int sum) {
-    if (n == 0) {
-        return sum;
+        System.out.println(sumaRecursive(lstNumeros));
+        System.out.println(altElem(lstNumeros, lstNumeros2));
     }
 
-    sum += n;
-    return num(n - 1, sum);
-
-}
-
+// Problem 1
     public static Integer sumaFor(ArrayList<Integer> lstNumeros) {
         int resultado = 0;
         for (Integer i = 0; i < lstNumeros.size(); i++) {
@@ -61,9 +57,36 @@ public class PruebasAbstracta {
         return resultado;
     }
 
-    public static Integer sumaRecursiva(Integer n, ArrayList<Integer> lstNumeros) {
-        if n 
-        return 0;
+    public static Integer sumaRecursive(List<Integer> lstNumeros) {
+        if (lstNumeros.isEmpty() == true) {
+            return 0;
+        } else {
+            return lstNumeros.get(0) + sumaRecursive(lstNumeros.subList(1, lstNumeros.size()));
+        }
     }
 
+    // Problem 2
+    public static List altElem(List lst1, List lst2) {
+        List<Integer> lstRes = new ArrayList<>();
+        int lsize;
+        List<Integer> lst1end = new ArrayList<>();
+        List<Integer> lst2end = new ArrayList<>();
+        if (lst1.size() > lst2.size()) {
+            lsize = lst2.size();
+            lst1end = lst1.subList(lsize, lst1.size());
+        } else {
+            lsize = lst1.size();
+            lst2end = lst2.subList(lsize, lst2.size());
+        }
+        for (int i = 0; i < lsize; i++) {
+            lstRes.add((Integer) lst1.get(i));
+            lstRes.add((Integer) lst2.get(i));
+        }
+        if (lst1.size() > lst2.size()) {
+            lstRes.addAll(lst1end);
+        } else {
+            lstRes.addAll(lst2end);
+        }
+        return lstRes;
+    }
 }
