@@ -5,9 +5,9 @@
  */
 package pruebasabstracta;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.System.console;
 import java.util.ArrayList;
+import java.util.Collections;
+import static java.util.Collections.list;
 import java.util.List;
 
 /**
@@ -31,6 +31,11 @@ public class PruebasAbstracta {
         lstNumeros2.add(4);
         lstNumeros2.add(4);
         lstNumeros2.add(4);
+        List<Integer> lstNumeros3 = new ArrayList<>();
+        lstNumeros3.add(50);
+        lstNumeros3.add(2);
+        lstNumeros3.add(1);
+        lstNumeros3.add(9);
 
         System.out.println(sumaFor(lstNumeros));
         System.out.println(sumaWhile(lstNumeros));
@@ -38,6 +43,7 @@ public class PruebasAbstracta {
         System.out.println(altElem(lstNumeros, lstNumeros2));
         System.out.println(fibo(15));
         System.out.println(fibo2());
+        System.out.println(largestNum(lstNumeros3));
     }
 
 // Problem 1
@@ -121,10 +127,30 @@ public class PruebasAbstracta {
     }
 
     //Problem 4
-    public static char[] seprar(Integer x) {
+    public static char[] separar(Integer x) {
         String numero = String.valueOf(x); // convierto a string
         char[] digitos = numero.toCharArray(); //string a arreglo de char
-        return digitos;       
+        return digitos;
     }
-    
+
+    public static List largestNum(List<Integer> lstNumbers) {
+        Collections.sort(lstNumbers);
+        List<Integer> lstRes = new ArrayList<>();
+        for (int i = 0; i < lstNumbers.size(); i++) {
+            if (lstNumbers.get(i) > 9) {
+                char[] separados;
+                separados = separar(i);
+                int primerDigito = separados[1];
+                for (int j = 0; j < lstRes.size(); j++) {
+                    if (primerDigito <= lstRes.get(j)) {
+                        lstRes.add(j);
+                    }
+                }
+            } else {
+                lstRes.add(lstNumbers.get(i));
+            }
+        }
+
+        return lstRes;
+    }
 }
